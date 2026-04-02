@@ -1,31 +1,8 @@
 import { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
 import { personalInfo } from '../constants'
 import FloatingTorus from './bg3d/FloatingTorus'
 
-// ─────────────────────────────────────────────
-// HOW TO GET YOUR EMAILJS CREDENTIALS (free):
-//  1. Go to https://www.emailjs.com and sign up
-//  2. Dashboard → Email Services → Add New Service
-//     → choose Gmail → connect your Gmail account
-//     → copy the Service ID  →  replace VITE_EMAILJS_SERVICE_ID
-//  3. Dashboard → Email Templates → Create New Template
-//     → use variables: {{from_name}}, {{from_email}}, {{message}}
-//     → copy the Template ID  →  replace VITE_EMAILJS_TEMPLATE_ID
-//  4. Dashboard → Account → Public Key
-//     → copy it  →  replace VITE_EMAILJS_PUBLIC_KEY
-//
-//  Store them in  3dPortfolio/.env  (create the file):
-//    VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
-//    VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
-//    VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxxxxxxx
-//
-//  .env is already in .gitignore so your keys stay private.
-// ─────────────────────────────────────────────
-
-const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID'
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
-const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'YOUR_PUBLIC_KEY'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
 
 const inputClass =
   'w-full bg-transparent border border-[#4f9eff22] text-white placeholder-[#8da5c4] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#4f9eff] transition'
@@ -35,6 +12,7 @@ const Contact = () => {
   const [form, setForm]       = useState({ name: '', email: '', message: '' })
   const [loading, setLoading] = useState(false)
   const [status, setStatus]   = useState(null) // 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -43,12 +21,24 @@ const Contact = () => {
     e.preventDefault()
     setLoading(true)
     setStatus(null)
+    setErrorMsg('')
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      const res = await fetch(`${BACKEND_URL}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Server error')
       setStatus('success')
       setForm({ name: '', email: '', message: '' })
-    } catch {
+    } catch (err) {
       setStatus('error')
+      setErrorMsg(err.message || 'Unknown error')
     } finally {
       setLoading(false)
     }
@@ -118,7 +108,7 @@ const Contact = () => {
             <label className="text-[#8da5c4] text-sm mb-1 block">Your Name</label>
             <input
               type="text"
-              name="from_name"
+              name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="John Doe"
@@ -131,7 +121,7 @@ const Contact = () => {
             <label className="text-[#8da5c4] text-sm mb-1 block">Your Email</label>
             <input
               type="email"
-              name="from_email"
+              name="email"
               value={form.email}
               onChange={handleChange}
               placeholder="john@example.com"
@@ -168,7 +158,7 @@ const Contact = () => {
           )}
           {status === 'error' && (
             <p className="text-red-400 text-sm mt-1">
-              ❌ Something went wrong. Please email me directly at{' '}
+              ❌ {errorMsg || 'Something went wrong.'} Please email me directly at{' '}
               <a href={`mailto:${personalInfo.email}`} className="underline">
                 {personalInfo.email}
               </a>

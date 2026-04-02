@@ -60,13 +60,12 @@ const Hero = () => {
             {/* Replace the href below with your raw GitHub PDF URL once uploaded:
                 https://raw.githubusercontent.com/Devendiran-T/portfolio/main/public/resume.pdf */}
             <a
-              href={personalInfo.resumeUrl || '#'}
-              download="Devendiran_T_Resume.pdf"
+              href={personalInfo.resumeUrl}
               target="_blank"
               rel="noreferrer"
               className="bg-[#9b6bff] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#7c4fd4] transition shadow-glow"
             >
-              ⬇ Download Resume
+              Download Resume
             </a>
           </div>
         </div>

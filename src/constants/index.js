@@ -54,13 +54,14 @@ export const technicalSkills = [
 
 export const experiences = [
   {
-    title: "Cloud Computing Intern (AWS & Azure)",
+    title: "Cloud Computing Intern – AWS & Azure",
     company_name: "Gateway Software Solutions, Coimbatore",
     date: "December 2025 – January 2026",
     points: [
-      "Worked with AWS services: EC2, S3, IAM, Lambda.",
-      "Deployed ML model endpoints on AWS cloud.",
-      "Worked with Microsoft Azure VMs and Blob Storage.",
+      "Gained practical exposure to core AWS services: EC2 (compute), S3 (storage), IAM (security), and Lambda (serverless).",
+      "Worked with Microsoft Azure virtual machines, Azure Blob Storage, and Azure Functions.",
+      "Deployed a sample ML model endpoint on AWS to understand cloud-based AI inference pipelines.",
+      "Earned internal completion certificate; currently pursuing official AWS Cloud Practitioner certification.",
     ],
   },
   {
@@ -68,9 +69,9 @@ export const experiences = [
     company_name: "Emglitz Technologies, Coimbatore",
     date: "June 2025 – July 2025",
     points: [
-      "Built responsive pages using HTML5, CSS3, JavaScript.",
-      "Improved UI/UX and reduced layout bugs by 30%.",
-      "Delivered Car Showcase as main project deliverable.",
+      "Developed responsive web pages using HTML5, CSS3, and vanilla JavaScript for client projects.",
+      "Collaborated with senior developers on UI/UX improvements, reducing reported layout bugs by ~30%.",
+      "Delivered the Car Showcase project as part of internship deliverables, later expanded into a full React.js SPA.",
     ],
   },
 ];
@@ -79,11 +80,11 @@ export const projects = [
   {
     name: "AI Human Tracking System",
     description:
-      "Real-time human detection system using YOLO algorithm for security monitoring. Processes live camera feeds with object detection and bounding box visualization.",
+      "Real-time human detection pipeline using YOLOv8 and OpenCV achieving high-accuracy bounding-box detection at video stream framerates. Designed for security monitoring with sub-100ms latency on standard hardware.",
     tags: [
       { name: "Python", color: "blue-text-gradient" },
       { name: "OpenCV", color: "green-text-gradient" },
-      { name: "YOLO", color: "pink-text-gradient" },
+      { name: "YOLOv8", color: "pink-text-gradient" },
       { name: "Computer Vision", color: "orange-text-gradient" },
     ],
     source_code_link: "https://github.com/Devendiran-T",
@@ -91,11 +92,11 @@ export const projects = [
   {
     name: "Online Bus Booking",
     description:
-      "Full-stack bus ticket reservation platform with dynamic seat selection, route search, and booking confirmation. RESTful backend with Python.",
+      "End-to-end bus ticket reservation platform with dynamic seat selection, route search, and booking confirmation. Python Flask backend with RESTful API design and responsive UI across desktop and mobile.",
     tags: [
       { name: "Python", color: "blue-text-gradient" },
-      { name: "JavaScript", color: "green-text-gradient" },
-      { name: "HTML", color: "pink-text-gradient" },
+      { name: "Flask", color: "green-text-gradient" },
+      { name: "JavaScript", color: "pink-text-gradient" },
       { name: "Full Stack", color: "orange-text-gradient" },
     ],
     source_code_link: "https://github.com/Devendiran-T",
@@ -103,7 +104,7 @@ export const projects = [
   {
     name: "Car Showcase Website",
     description:
-      "Modern responsive React.js single-page application showcasing car models with dynamic filtering, reusable UI components, and React Hooks state management.",
+      "Modern responsive React.js SPA showcasing car models with reusable UI components, dynamic filtering, and model comparison using React Hooks state management.",
     tags: [
       { name: "React.js", color: "blue-text-gradient" },
       { name: "JavaScript", color: "green-text-gradient" },
@@ -117,6 +118,7 @@ export const personalInfo = {
   name: "Devendiran T",
   role: "AI & ML Engineer | B.Tech AI & Data Science",
   tagline: "Building intelligent systems with Python & ML",
+  objective: "Motivated B.Tech student specializing in Artificial Intelligence and Data Science at RVS College of Engineering and Technology, with hands-on experience in machine learning, computer vision, and full-stack AI-powered applications. Seeking an AI/ML internship or entry-level role to deploy deep learning models, build intelligent systems, and deliver real-world impact through data-driven solutions.",
   college: "RVS College of Engineering and Technology, Coimbatore",
   duration: "2023 – 2027",
   cgpa: "8.2 / 10.0",
@@ -125,6 +127,11 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/devendiran-t-5250892a5",
   phone: "9025965405",
   location: "Coimbatore, Tamil Nadu",
-  // Resume PDF — served from /public/resume.pdf
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1hsAKEXmCd4cGpP43cJIpJlJRp1U8BgYj/view?usp=drivesdk",
 };
+
+export const certifications = [
+  "Web Development – Emglitz Technologies, Coimbatore (Jul 2025)",
+  "AWS & Azure Cloud Computing – Gateway Software Solutions, Coimbatore (Jan 2026)",
+  "YOLO Object Detection – Self-directed project certification (in progress)",
+];
