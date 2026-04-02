@@ -134,7 +134,7 @@ const About = () => {
         </div>
 
         {/* ── Technical Skills grid ── */}
-        <div className="mt-20">
+        <div className="mt-20" id="skills">
           <motion.p
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }} viewport={{ once: true }}

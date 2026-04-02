@@ -18,8 +18,8 @@ const App = () => {
         <Navbar />
         <Hero />
         <About />
-        <Experience />
         <Projects />
+        <Experience />
         <Contact />
         <footer className="text-center text-secondary text-sm py-6">
           © {new Date().getFullYear()} Devendiran T. All rights reserved.
